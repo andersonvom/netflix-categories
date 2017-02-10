@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Search all available Netflix categories (including those that are hidden from the user)">
+    <meta name="author" content="Anderson Mesquita (andersonvom)">
+
+		<title>Search All Netflix Categories</title>
+
+		<link rel="stylesheet" href="./index.css">
+
+		<script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+		<script type="application/javascript" src="./data/categories.min.js"></script>
+		<script type="application/javascript" src="./index.js"></script>
+  </head>
+
+	<body ng-app="netflixCategories" ng-controller="SearchController">
+
+    <nav>
+			<a href="#">Search <span style="color: red">Netflix</span> Categories</a>
+    </nav>
+
+    <div class="container">
+			<form name="search">
+				<input placeholder="Type something to filter..." type="text" ng-model="q.name" name="q" />
+			</form>
+
+			<ul>
+				<li ng-repeat="cat in categories | filter:q:all">
+					<a ng-href="{{url(cat.id)}}">{{cat.name}}</a>
+				</li>
+			</ul>
+    </div>
+	</body>
+</html>
+
